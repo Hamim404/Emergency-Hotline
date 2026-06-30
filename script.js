@@ -82,6 +82,9 @@ makeNewElement("electricity-call", "Electricity Helpline", "16216");
 makeNewElement("brac-call", "Brac Helpline", "16445");
 makeNewElement("railway-call", "Bangladesh Railway Helpline", "163");
 
+document.getElementById("clear-btn").addEventListener("click", function () {
+  document.getElementById("history-area").innerHTML = "";
+});
 // Call Buttons Function
 const callBtns = document.getElementsByClassName("call-btns");
 const callTitles = document.querySelectorAll(".card-content .text-xl");
@@ -95,3 +98,16 @@ callFunction("govt-call", "📞 Calling Anti-Corruption Helpline 106...");
 callFunction("electricity-call", "📞 Calling Electricity Helpline 16216...");
 callFunction("brac-call", "📞 Calling Brac Helpline 16445...");
 callFunction("railway-call", "📞 Calling Bangladesh Railway Helpline 163...");
+
+// Copy Button Function
+const copyBtns = document.querySelectorAll(".copy-btn");
+const callNumbers = document.querySelectorAll(".call-number");
+copyBtns.forEach((button, i) => {
+  button.addEventListener("click", () => {
+    const textToCopy = callNumbers[i].innerText;
+
+    navigator.clipboard.writeText(textToCopy);
+
+    alert("Number Copied...");
+  });
+});
