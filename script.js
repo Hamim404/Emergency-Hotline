@@ -102,12 +102,13 @@ callFunction("railway-call", "📞 Calling Bangladesh Railway Helpline 163...");
 // Copy Button Function
 const copyBtns = document.querySelectorAll(".copy-btn");
 const callNumbers = document.querySelectorAll(".call-number");
+let copyCountNumber = getInnerTextNumber("copy-count");
 copyBtns.forEach((button, i) => {
   button.addEventListener("click", () => {
     const textToCopy = callNumbers[i].innerText;
-
     navigator.clipboard.writeText(textToCopy);
-
     alert("Number Copied...");
+    copyCountNumber++;
+    setInnerText("copy-count", copyCountNumber)
   });
 });
